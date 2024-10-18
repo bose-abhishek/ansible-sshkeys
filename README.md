@@ -41,3 +41,14 @@ ansible-playbook -i hosts install/sshkeys.yml -e "ansible_ssh_pass=PASSWORD"
 
   - Alternatively, if you already have your public key on remote systems but want to copy a bunch of other keys then just run `ansible-playbook` without the `-e` parameter.
 
+### Issues
+1. 'authorized_key' module not found.
+
+```
+ERROR! couldn't resolve module/action 'authorized_key'. This often indicates a misspelling, missing collection, or incorrect module path.
+```
+The above error occurs as only ansible-core packages are installed in the system.
+#### Resolution
+```
+# ansible-galaxy collection install ansible.posix
+```
