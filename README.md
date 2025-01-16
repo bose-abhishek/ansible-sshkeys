@@ -32,8 +32,13 @@ cat ~/.ssh/id_dsa.pub >> install/roles/sshkeys/files/authorized_keys
 ```
 
 ### Running the Thing
+  - Run playbook to accept remote host key fingetprint
 
-  - Run playbook, pass `-e "ansible_ssh_pass=PASSWORD"` for the default root password.
+```
+ansible-playbook -i hosts known_host.yaml
+```
+
+  - Run playbook to copy the public key, pass `-e "ansible_ssh_pass=PASSWORD"` for the default root password.
 
 ```
 ansible-playbook -i hosts install/sshkeys.yml -e "ansible_ssh_pass=PASSWORD"
